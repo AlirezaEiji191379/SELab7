@@ -32,3 +32,12 @@ Argument --> , GenExpression Argument | lambda
 Identifier --> <IDENTIFIER_LITERAL>
 Integer --> <INTEGER_LITERAL>
 ```
+
+# Questions
+
+## Q1.
+- Clean code: A clean code is easily readable and understandable for other programmers. All the variables are well named and there is no duplication in the code. It has the minimal number of classes and it is easily maintainable. A clean code should pass all the tests.
+
+- Technical debt: In some situations programmers rather to write an unclean code for example a code without the required tests due to the business pressure. This may bring them a temporarily speed up. However, it will turn into a technical debt which not only slows down their pace but also they have to pay off it by writing the tests.
+
+- Code smell: A code smell is any characteristic in the source code of a program that possibly indicates a deeper problem. It is a result of poor or misguided programming.
