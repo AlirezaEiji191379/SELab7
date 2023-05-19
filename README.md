@@ -62,3 +62,13 @@ Integer --> <INTEGER_LITERAL>
 - **Couplers:** All the smells in this group contribute to excessive coupling between classes or show what happens if coupling is replaced by excessive delegation.
 
 	Examples: Feature envy, Incomplete library class, Middle man, inappropriat intimacy, Message chains
+	
+## Q3.
+- Dispensables
+
+- To treat the lazy classes, we can use the following refactorings. 
+	Inline class refactoring: Move all features from the class to another one.
+	Collapse Hierarchy: Merge the subclass and superclass.
+	
+- Sometimes a Lazy Class is created in order to delineate intentions for future development, In this case, try to maintain a balance between clarity and simplicity in your code.
+	
