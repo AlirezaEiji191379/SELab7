@@ -1,5 +1,7 @@
 package codeGenerator;
 
+import codeGenerator.Enums.Operation;
+
 import java.util.ArrayList;
 
 /**
