@@ -1,5 +1,6 @@
 package parser;
 
+import parser.Abstractions.IParserTable;
 import scanner.token.Token;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Map;
  * Created by mohammad hosein on 6/25/2015.
  */
 
-public class ParseTable {
+public class ParseTable implements IParserTable {
     private ArrayList<Map<Token, Action>> actionTable;
     private ArrayList<Map<NonTerminal, Integer>> gotoTable;
 
