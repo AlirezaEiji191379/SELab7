@@ -2,8 +2,8 @@ package semantic.symbol;
 
 import codeGenerator.Address;
 import codeGenerator.Memory;
-import codeGenerator.TypeAddress;
-import codeGenerator.varType;
+import codeGenerator.Enums.TypeAddress;
+import codeGenerator.Enums.varType;
 import errorHandler.ErrorHandler;
 
 import java.util.ArrayList;
