@@ -31,10 +31,6 @@ public class Memory implements IMemory {
     @Override
     public int getTemp() {
         lastTempIndex += tempSize;
-        return Temp();
-    }
-
-    private int Temp() {
         return lastTempIndex - tempSize;
     }
 
