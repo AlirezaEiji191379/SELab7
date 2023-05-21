@@ -13,7 +13,7 @@ public class CodeGenerator implements ICodeGenerator {
     }
     @Override
     public void printMemory() {
-        functionOperationData.getMemory().pintCodeBlock();
+        functionOperationData.getSemanticFacade().pintCodeBlock();
     }
     @Override
     public void semanticFunction(int func, Token next) {

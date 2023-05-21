@@ -9,7 +9,7 @@ public class LabelOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
         functionOperationData.getSs().push(
-                new Address(functionOperationData.getMemory().getCurrentCodeBlockAddress(),
+                new Address(functionOperationData.getSemanticFacade().getCurrentCodeBlockAddress(),
                         varType.Address));
     }
 

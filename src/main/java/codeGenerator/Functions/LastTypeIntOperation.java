@@ -7,7 +7,7 @@ import semantic.symbol.SymbolType;
 public class LastTypeIntOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        functionOperationData.getSymbolTable().setLastType(SymbolType.Int);
+        functionOperationData.getSemanticFacade().setLastType(SymbolType.Int);
     }
 
     @Override

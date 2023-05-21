@@ -7,7 +7,7 @@ public class ExtendOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
         functionOperationData.getSs().pop();
-        functionOperationData.getSymbolTable().setSuperClass(functionOperationData.getSymbolStack().pop(), functionOperationData.getSymbolStack().peek());
+        functionOperationData.getSemanticFacade().setSuperClass(functionOperationData.getSymbolStack().pop(), functionOperationData.getSymbolStack().peek());
     }
 
     @Override

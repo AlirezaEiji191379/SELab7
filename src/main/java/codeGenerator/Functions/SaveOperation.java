@@ -8,7 +8,7 @@ import codeGenerator.FunctionOperationData;
 public class SaveOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        functionOperationData.getSs().push(new Address(functionOperationData.getMemory().saveMemory(), varType.Address));
+        functionOperationData.getSs().push(new Address(functionOperationData.getSemanticFacade().saveMemory(), varType.Address));
     }
 
     @Override

@@ -12,7 +12,7 @@ public class FPIDOperation implements ICodeGeneratorOperation {
         functionOperationData.getSs().pop();
         functionOperationData.getSs().pop();
 
-        Symbol s = functionOperationData.getSymbolTable().get(functionOperationData.getSymbolStack().pop(), functionOperationData.getSymbolStack().pop());
+        Symbol s = functionOperationData.getSemanticFacade().get(functionOperationData.getSymbolStack().pop(), functionOperationData.getSymbolStack().pop());
         varType t = varType.Int;
         switch (s.type) {
             case Bool:

@@ -13,7 +13,7 @@ public class ArgOperation implements ICodeGeneratorOperation {
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
         String methodName = functionOperationData.getCallStack().pop();
         try {
-            Symbol s = functionOperationData.getSymbolTable()
+            Symbol s = functionOperationData.getSemanticFacade()
                     .getNextParam(functionOperationData.getCallStack().peek(), methodName);
             varType t = varType.Int;
             switch (s.type) {
@@ -28,7 +28,7 @@ public class ArgOperation implements ICodeGeneratorOperation {
             if (param.varType != t) {
                 ErrorHandler.printError("The argument type isn't match");
             }
-            functionOperationData.getMemory().add3AddressCode(Operation.ASSIGN, param, new Address(s.address, t), null);
+            functionOperationData.getSemanticFacade().add3AddressCode(Operation.ASSIGN, param, new Address(s.address, t), null);
         } catch (IndexOutOfBoundsException e) {
             ErrorHandler.printError("Too many arguments pass for method");
         }

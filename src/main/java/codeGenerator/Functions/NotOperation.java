@@ -10,13 +10,13 @@ import errorHandler.ErrorHandler;
 public class NotOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        Address temp = new Address(functionOperationData.getMemory().getTemp(), varType.Bool);
+        Address temp = new Address(functionOperationData.getSemanticFacade().getTemp(), varType.Bool);
         Address s2 = functionOperationData.getSs().pop();
         Address s1 = functionOperationData.getSs().pop();
         if (s1.varType != varType.Bool) {
             ErrorHandler.printError("In not operator the operand must be boolean");
         }
-        functionOperationData.getMemory().add3AddressCode(Operation.NOT, s1, s2, temp);
+        functionOperationData.getSemanticFacade().add3AddressCode(Operation.NOT, s1, s2, temp);
         functionOperationData.getSs().push(temp);
     }
 

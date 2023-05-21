@@ -7,7 +7,7 @@ import codeGenerator.FunctionOperationData;
 public class PrintOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        functionOperationData.getMemory().add3AddressCode(Operation.PRINT, functionOperationData.getSs().pop(), null, null);
+        functionOperationData.getSemanticFacade().add3AddressCode(Operation.PRINT, functionOperationData.getSs().pop(), null, null);
     }
 
     @Override

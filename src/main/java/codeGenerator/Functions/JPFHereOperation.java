@@ -9,7 +9,7 @@ import codeGenerator.FunctionOperationData;
 public class JPFHereOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        functionOperationData.getMemory().add3AddressCode(functionOperationData.getSs().pop().num, Operation.JP, new Address(functionOperationData.getMemory().getCurrentCodeBlockAddress(), varType.Address), null, null);
+        functionOperationData.getSemanticFacade().add3AddressCode(functionOperationData.getSs().pop().num, Operation.JP, new Address(functionOperationData.getSemanticFacade().getCurrentCodeBlockAddress(), varType.Address), null, null);
     }
 
     @Override

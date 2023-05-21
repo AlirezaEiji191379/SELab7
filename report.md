@@ -15,3 +15,8 @@ Facade 1:
 در کلاس Parser کلاس های دیگر مثل ParseTable و LexicalAnalyser و CodeGenerator بیرون کشیده شدند و در یک
 کلاس Facade قرار گرفته و Wrapp شدند.
 
+Facade 2:
+کلاس هایی مموری و symbobTable ازشان interface بیرون کشیده شد و تمامی توابع آن ها در یک کلاس به نام SemanticFacade جمع شد که در کلاس های CodeGnerator استفاده میشود.
+
+
+

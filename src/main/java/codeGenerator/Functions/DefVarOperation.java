@@ -10,7 +10,7 @@ public class DefVarOperation implements ICodeGeneratorOperation {
         String var = functionOperationData.getSymbolStack().pop();
         String methodName = functionOperationData.getSymbolStack().pop();
         String className = functionOperationData.getSymbolStack().pop();
-        functionOperationData.getSymbolTable().addMethodLocalVariable(className, methodName, var);
+        functionOperationData.getSemanticFacade().addMethodLocalVariable(className, methodName, var);
         functionOperationData.getSymbolStack().push(className);
         functionOperationData.getSymbolStack().push(methodName);
     }

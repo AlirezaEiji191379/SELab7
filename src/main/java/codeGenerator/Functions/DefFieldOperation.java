@@ -7,7 +7,7 @@ public class DefFieldOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
         functionOperationData.getSs().pop();
-        functionOperationData.getSymbolTable().addField(functionOperationData.getSymbolStack().pop(), functionOperationData.getSymbolStack().peek());
+        functionOperationData.getSemanticFacade().addField(functionOperationData.getSymbolStack().pop(), functionOperationData.getSymbolStack().peek());
     }
 
     @Override

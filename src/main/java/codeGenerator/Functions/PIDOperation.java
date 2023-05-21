@@ -14,7 +14,7 @@ public class PIDOperation implements ICodeGeneratorOperation {
             String className = functionOperationData.getSymbolStack().pop();
             try {
 
-                Symbol s = functionOperationData.getSymbolTable().get(className, methodName, functionOperationData.getToken().value);
+                Symbol s = functionOperationData.getSemanticFacade().get(className, methodName, functionOperationData.getToken().value);
                 varType t = varType.Int;
                 switch (s.type) {
                     case Bool:

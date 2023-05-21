@@ -10,13 +10,13 @@ import errorHandler.ErrorHandler;
 public class MultOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        Address temp = new Address(functionOperationData.getMemory().getTemp(), varType.Int);
+        Address temp = new Address(functionOperationData.getSemanticFacade().getTemp(), varType.Int);
         Address s2 = functionOperationData.getSs().pop();
         Address s1 = functionOperationData.getSs().pop();
         if (s1.varType != varType.Int || s2.varType != varType.Int) {
             ErrorHandler.printError("In mult two operands must be integer");
         }
-        functionOperationData.getMemory().add3AddressCode(Operation.MULT, s1, s2, temp);
+        functionOperationData.getSemanticFacade().add3AddressCode(Operation.MULT, s1, s2, temp);
         functionOperationData.getSs().push(temp);
     }
 

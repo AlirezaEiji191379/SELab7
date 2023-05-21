@@ -9,11 +9,11 @@ import codeGenerator.FunctionOperationData;
 public class JPFSaveOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        Address save = new Address(functionOperationData.getMemory().saveMemory(), varType.Address);
-        functionOperationData.getMemory().add3AddressCode(functionOperationData.getSs().pop().num,
+        Address save = new Address(functionOperationData.getSemanticFacade().saveMemory(), varType.Address);
+        functionOperationData.getSemanticFacade().add3AddressCode(functionOperationData.getSs().pop().num,
                 Operation.JPF,
                 functionOperationData.getSs().pop(),
-                new Address(functionOperationData.getMemory().getCurrentCodeBlockAddress(),
+                new Address(functionOperationData.getSemanticFacade().getCurrentCodeBlockAddress(),
                         varType.Address),
                 null);
         functionOperationData.getSs().push(save);
