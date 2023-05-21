@@ -28,7 +28,9 @@ public class CallOperation implements ICodeGeneratorOperation {
                 t = varType.Bool;
                 break;
         }
-        Address temp = new Address(functionOperationData.getSemanticFacade().getTemp(), t);
+        functionOperationData.getSemanticFacade().updateLastTempIndex();
+        var tempAdd = functionOperationData.getSemanticFacade().getTemp();
+        Address temp = new Address(tempAdd, t);
         functionOperationData.getSs().push(temp);
         functionOperationData.getSemanticFacade().add3AddressCode(Operation.ASSIGN, new Address(temp.num, varType.Address, TypeAddress.Imidiate), new Address(functionOperationData.getSemanticFacade().getMethodReturnAddress(className, methodName), varType.Address), null);
         functionOperationData.getSemanticFacade().add3AddressCode(Operation.ASSIGN, new Address(functionOperationData.getSemanticFacade().getCurrentCodeBlockAddress() + 2, varType.Address, TypeAddress.Imidiate), new Address(functionOperationData.getSemanticFacade().getMethodCallerAddress(className, methodName), varType.Address), null);

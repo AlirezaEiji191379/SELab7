@@ -22,6 +22,11 @@ public class SemanticFacade implements ISemanticFacade {
 
 
     @Override
+    public void updateLastTempIndex(){
+        memory.updateLastTempIndex();
+    }
+
+    @Override
     public int getTemp() {
         return memory.getTemp();
     }

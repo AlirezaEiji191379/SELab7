@@ -6,6 +6,8 @@ import semantic.symbol.Symbol;
 import semantic.symbol.SymbolType;
 
 public interface ISemanticFacade {
+    void updateLastTempIndex();
+
     int getTemp();
 
     int getDateAddress();

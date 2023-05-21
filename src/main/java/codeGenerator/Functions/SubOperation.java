@@ -10,7 +10,9 @@ import errorHandler.ErrorHandler;
 public class SubOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        Address temp = new Address(functionOperationData.getSemanticFacade().getTemp(), varType.Int);
+        functionOperationData.getSemanticFacade().updateLastTempIndex();
+        var tempAdd = functionOperationData.getSemanticFacade().getTemp();
+        Address temp = new Address(tempAdd, varType.Int);
         Address s2 = functionOperationData
                 .getSs().pop();
         Address s1 = functionOperationData
