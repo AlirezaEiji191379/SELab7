@@ -23,4 +23,6 @@ Seprate Query from modifier:
 
 در کلاس مموری تابع getTemp به دو تابع getTemp  و updateLastTempIndex شکسته شد و متد کوئری از متد تغییر دهنده جدا شد.
 
+Self encapsulated field:
 
+در کلاس Memory فیلد privateی به نام codeBlock برایش یک تابع getter نوشته شد و از همان در کلاس استفاده شد.
