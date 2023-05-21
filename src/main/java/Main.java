@@ -1,17 +1,21 @@
+import codeGenerator.Abstractions.ICodeGeneratorOperation;
+import org.reflections.Reflections;
+import parser.Parser;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import parser.Parser;
-
 public class Main {
+
     public static void main(String[] args) {
-        Parser parser = new Parser();
         try {
+            Parser parser = new Parser(new Scanner(new File("src/main/resources/code")));
             // start parsing
-            parser.startParse(new Scanner(new File("src/main/resources/code")));
+            parser.startParse();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
+
 }

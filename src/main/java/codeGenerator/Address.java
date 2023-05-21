@@ -1,5 +1,8 @@
 package codeGenerator;
 
+import codeGenerator.Enums.TypeAddress;
+import codeGenerator.Enums.varType;
+
 /**
  * Created by mohammad hosein on 6/28/2015.
  */
@@ -7,7 +10,7 @@ package codeGenerator;
 public class Address {
     public int num;
     public TypeAddress Type;
-    public varType varType;
+    public codeGenerator.Enums.varType varType;
 
     public Address(int num, varType varType, TypeAddress Type) {
         this.num = num;

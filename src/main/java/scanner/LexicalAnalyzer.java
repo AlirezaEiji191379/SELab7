@@ -1,16 +1,17 @@
 package scanner;
 
 import errorHandler.ErrorHandler;
+import scanner.Abstractions.ILexicalAnalyzer;
 import scanner.token.Token;
 import scanner.type.Type;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class lexicalAnalyzer {
+public class LexicalAnalyzer implements ILexicalAnalyzer {
     private Matcher matcher;
 
-    public lexicalAnalyzer(java.util.Scanner sc) {
+    public LexicalAnalyzer(java.util.Scanner sc) {
         StringBuilder input = new StringBuilder();
         while (sc.hasNext()) {
             input.append(sc.nextLine());

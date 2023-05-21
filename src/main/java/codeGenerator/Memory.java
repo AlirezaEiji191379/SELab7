@@ -1,11 +1,14 @@
 package codeGenerator;
 
+import codeGenerator.Abstractions.IMemory;
+import codeGenerator.Enums.Operation;
+
 import java.util.ArrayList;
 
 /**
  * Created by mohammad hosein on 6/27/2015.
  */
-public class Memory {
+public class Memory implements IMemory {
     private ArrayList<_3AddressCode> codeBlock;
     private int lastTempIndex;
     private int lastDataAddress;
@@ -20,40 +23,61 @@ public class Memory {
         lastDataAddress = stratDataMemoryAddress;
     }
 
+    @Override
+    public void updateLastTempIndex(){
+        lastTempIndex += tempSize;
+    }
+
+    @Override
     public int getTemp() {
         lastTempIndex += tempSize;
         return lastTempIndex - tempSize;
     }
 
+    @Override
     public int getDateAddress() {
         lastDataAddress += dataSize;
+        return DateAddress();
+    }
+
+    private int DateAddress(){
         return lastDataAddress - dataSize;
     }
 
+    @Override
     public int saveMemory() {
-        codeBlock.add(new _3AddressCode());
-        return codeBlock.size() - 1;
+        getCodeBlock().add(new _3AddressCode());
+        return getCodeBlock().size() - 1;
     }
 
+    @Override
     public void add3AddressCode(Operation op, Address opr1, Address opr2, Address opr3) {
-        codeBlock.add(new _3AddressCode(op, opr1, opr2, opr3));
+        getCodeBlock().add(new _3AddressCode(op, opr1, opr2, opr3));
     }
 
+    @Override
     public void add3AddressCode(int i, Operation op, Address opr1, Address opr2, Address opr3) {
-        codeBlock.remove(i);
-        codeBlock.add(i, new _3AddressCode(op, opr1, opr2, opr3));
+        getCodeBlock().remove(i);
+        getCodeBlock().add(i, new _3AddressCode(op, opr1, opr2, opr3));
     }
 
+    @Override
     public int getCurrentCodeBlockAddress() {
-        return codeBlock.size();
+        return getCodeBlock().size();
     }
 
+    @Override
     public void pintCodeBlock() {
         System.out.println("Code Block");
-        for (int i = 0; i < codeBlock.size(); i++) {
-            System.out.println(i + " : " + codeBlock.get(i).toString());
+        for (int i = 0; i < getCodeBlock().size(); i++) {
+            System.out.println(i + " : " + getCodeBlock().get(i).toString());
         }
     }
+
+    ArrayList<_3AddressCode> getCodeBlock(){
+        return codeBlock;
+    }
+
 }
 
 class _3AddressCode {
