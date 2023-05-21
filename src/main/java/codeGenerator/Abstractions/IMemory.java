@@ -4,6 +4,8 @@ import codeGenerator.Address;
 import codeGenerator.Enums.Operation;
 
 public interface IMemory {
+    void updateLastTempIndex();
+
     int getTemp();
 
     int getDateAddress();

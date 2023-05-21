@@ -19,4 +19,8 @@ Facade 2:
 کلاس هایی مموری و symbobTable ازشان interface بیرون کشیده شد و تمامی توابع آن ها در یک کلاس به نام SemanticFacade جمع شد که در کلاس های CodeGnerator استفاده میشود.
 
 
+Seprate Query from modifier:
+
+در کلاس مموری تابع getTemp به دو تابع getTemp  و updateLastTempIndex شکسته شد و متد کوئری از متد تغییر دهنده جدا شد.
+
 

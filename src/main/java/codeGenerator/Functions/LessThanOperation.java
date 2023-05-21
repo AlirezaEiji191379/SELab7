@@ -10,7 +10,9 @@ import errorHandler.ErrorHandler;
 public class LessThanOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        Address temp = new Address(functionOperationData.getSemanticFacade().getTemp(), varType.Bool);
+        functionOperationData.getSemanticFacade().updateLastTempIndex();
+        var tempAdd = functionOperationData.getSemanticFacade().getTemp();
+        Address temp = new Address(tempAdd, varType.Bool);
         Address s2 = functionOperationData.getSs().pop();
         Address s1 = functionOperationData.getSs().pop();
         if (s1.varType != varType.Int || s2.varType != varType.Int) {

@@ -24,6 +24,11 @@ public class Memory implements IMemory {
     }
 
     @Override
+    public void updateLastTempIndex(){
+        lastTempIndex += tempSize;
+    }
+
+    @Override
     public int getTemp() {
         lastTempIndex += tempSize;
         return lastTempIndex - tempSize;
