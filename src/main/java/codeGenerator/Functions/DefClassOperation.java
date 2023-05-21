@@ -7,7 +7,7 @@ public class DefClassOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
         functionOperationData.getSs().pop();
-        functionOperationData.getSymbolTable().addClass(functionOperationData.getSymbolStack().peek());
+        functionOperationData.getSemanticFacade().addClass(functionOperationData.getSymbolStack().peek());
     }
 
     @Override

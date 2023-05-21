@@ -9,13 +9,13 @@ import codeGenerator.FunctionOperationData;
 public class WhileOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        functionOperationData.getMemory().add3AddressCode(functionOperationData.getSs().pop().num,
+        functionOperationData.getSemanticFacade().add3AddressCode(functionOperationData.getSs().pop().num,
                 Operation.JPF,
                 functionOperationData.getSs().pop(),
-                new Address(functionOperationData.getMemory().getCurrentCodeBlockAddress() + 1,
+                new Address(functionOperationData.getSemanticFacade().getCurrentCodeBlockAddress() + 1,
                         varType.Address),
                 null);
-        functionOperationData.getMemory().add3AddressCode(Operation.JP, functionOperationData.getSs().pop(), null, null);
+        functionOperationData.getSemanticFacade().add3AddressCode(Operation.JP, functionOperationData.getSs().pop(), null, null);
     }
 
     @Override

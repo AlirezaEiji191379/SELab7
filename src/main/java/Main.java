@@ -9,10 +9,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Parser parser = new Parser();
         try {
+            Parser parser = new Parser(new Scanner(new File("src/main/resources/code")));
             // start parsing
-            parser.startParse(new Scanner(new File("src/main/resources/code")));
+            parser.startParse();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

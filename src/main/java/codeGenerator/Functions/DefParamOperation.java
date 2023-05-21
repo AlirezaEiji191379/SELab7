@@ -12,7 +12,7 @@ public class DefParamOperation implements ICodeGeneratorOperation {
         String methodName = functionOperationData.getSymbolStack().pop();
         String className = functionOperationData.getSymbolStack().pop();
 
-        functionOperationData.getSymbolTable().addMethodParameter(className, methodName, param);
+        functionOperationData.getSemanticFacade().addMethodParameter(className, methodName, param);
 
         functionOperationData.getSymbolStack().push(className);
         functionOperationData.getSymbolStack().push(methodName);

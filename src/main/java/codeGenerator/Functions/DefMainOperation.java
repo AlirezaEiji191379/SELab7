@@ -10,11 +10,11 @@ public class DefMainOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
         //ss.pop();
-        functionOperationData.getMemory().add3AddressCode(functionOperationData.getSs().pop().num, Operation.JP, new Address(functionOperationData.getMemory().getCurrentCodeBlockAddress(), varType.Address), null, null);
+        functionOperationData.getSemanticFacade().add3AddressCode(functionOperationData.getSs().pop().num, Operation.JP, new Address(functionOperationData.getSemanticFacade().getCurrentCodeBlockAddress(), varType.Address), null, null);
         String methodName = "main";
         String className = functionOperationData.getSymbolStack().pop();
 
-        functionOperationData.getSymbolTable().addMethod(className, methodName, functionOperationData.getMemory().getCurrentCodeBlockAddress());
+        functionOperationData.getSemanticFacade().addMethod(className, methodName, functionOperationData.getSemanticFacade().getCurrentCodeBlockAddress());
 
         functionOperationData.getSymbolStack().push(className);
         functionOperationData.getSymbolStack().push(methodName);

@@ -10,7 +10,7 @@ public class StartCallOperation implements ICodeGeneratorOperation {
         functionOperationData.getSs().pop();
         String methodName = functionOperationData.getSymbolStack().pop();
         String className = functionOperationData.getSymbolStack().pop();
-        functionOperationData.getSymbolTable().startCall(className, methodName);
+        functionOperationData.getSemanticFacade().startCall(className, methodName);
         functionOperationData.getCallStack().push(className);
         functionOperationData.getCallStack().push(methodName);
     }

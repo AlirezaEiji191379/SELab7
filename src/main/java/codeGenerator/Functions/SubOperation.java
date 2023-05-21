@@ -10,7 +10,7 @@ import errorHandler.ErrorHandler;
 public class SubOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        Address temp = new Address(functionOperationData.getMemory().getTemp(), varType.Int);
+        Address temp = new Address(functionOperationData.getSemanticFacade().getTemp(), varType.Int);
         Address s2 = functionOperationData
                 .getSs().pop();
         Address s1 = functionOperationData
@@ -18,7 +18,7 @@ public class SubOperation implements ICodeGeneratorOperation {
         if (s1.varType != varType.Int || s2.varType != varType.Int) {
             ErrorHandler.printError("In sub two operands must be integer");
         }
-        functionOperationData.getMemory().add3AddressCode(Operation.SUB, s1, s2, temp);
+        functionOperationData.getSemanticFacade().add3AddressCode(Operation.SUB, s1, s2, temp);
         functionOperationData.getSs().push(temp);
     }
 

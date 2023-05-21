@@ -1,22 +1,24 @@
 package semantic.symbol;
 
+import codeGenerator.Abstractions.IMemory;
 import codeGenerator.Address;
 import codeGenerator.Memory;
 import codeGenerator.Enums.TypeAddress;
 import codeGenerator.Enums.varType;
 import errorHandler.ErrorHandler;
+import semantic.symbol.Abstractions.ISymbolTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SymbolTable {
+public class SymbolTable implements ISymbolTable {
     private Map<String, Klass> klasses;
     private Map<String, Address> keyWords;
-    private Memory mem;
+    private IMemory mem;
     private SymbolType lastType;
 
-    public SymbolTable(Memory memory) {
+    public SymbolTable(IMemory memory) {
         mem = memory;
         klasses = new HashMap<>();
         keyWords = new HashMap<>();
@@ -24,10 +26,12 @@ public class SymbolTable {
         keyWords.put("false", new Address(0, varType.Bool, TypeAddress.Imidiate));
     }
 
+    @Override
     public void setLastType(SymbolType type) {
         lastType = type;
     }
 
+    @Override
     public void addClass(String className) {
         if (klasses.containsKey(className)) {
             ErrorHandler.printError("This class already defined");
@@ -35,10 +39,12 @@ public class SymbolTable {
         klasses.put(className, new Klass());
     }
 
+    @Override
     public void addField(String fieldName, String className) {
         klasses.get(className).Fields.put(fieldName, new Symbol(lastType, mem.getDateAddress()));
     }
 
+    @Override
     public void addMethod(String className, String methodName, int address) {
         if (klasses.get(className).Methodes.containsKey(methodName)) {
             ErrorHandler.printError("This method already defined");
@@ -46,76 +52,67 @@ public class SymbolTable {
         klasses.get(className).Methodes.put(methodName, new Method(address, lastType));
     }
 
+    @Override
     public void addMethodParameter(String className, String methodName, String parameterName) {
         klasses.get(className).Methodes.get(methodName).addParameter(parameterName);
     }
 
+    @Override
     public void addMethodLocalVariable(String className, String methodName, String localVariableName) {
-//        try {
         if (klasses.get(className).Methodes.get(methodName).localVariable.containsKey(localVariableName)) {
             ErrorHandler.printError("This variable already defined");
         }
         klasses.get(className).Methodes.get(methodName).localVariable.put(localVariableName, new Symbol(lastType, mem.getDateAddress()));
-//        }catch (NullPointerException e){
-//            e.printStackTrace();
-//        }
     }
 
+    @Override
     public void setSuperClass(String superClass, String className) {
         klasses.get(className).superClass = klasses.get(superClass);
     }
 
+    @Override
     public Address get(String keywordName) {
         return keyWords.get(keywordName);
     }
 
+    @Override
     public Symbol get(String fieldName, String className) {
-//        try {
         return klasses.get(className).getField(fieldName);
-//        }catch (NullPointerException n)
-//        {
-//            n.printStackTrace();
-//            return null;
-//        }
     }
 
+    @Override
     public Symbol get(String className, String methodName, String variable) {
         Symbol res = klasses.get(className).Methodes.get(methodName).getVariable(variable);
         if (res == null) res = get(variable, className);
         return res;
     }
 
+    @Override
     public Symbol getNextParam(String className, String methodName) {
         return klasses.get(className).Methodes.get(methodName).getNextParameter();
     }
 
+    @Override
     public void startCall(String className, String methodName) {
-//        try {
         klasses.get(className).Methodes.get(methodName).reset();
-//        }catch (NullPointerException n)
-//        {
-//            n.printStackTrace();
-//        }
     }
 
+    @Override
     public int getMethodCallerAddress(String className, String methodName) {
         return klasses.get(className).Methodes.get(methodName).callerAddress;
     }
 
+    @Override
     public int getMethodReturnAddress(String className, String methodName) {
         return klasses.get(className).Methodes.get(methodName).returnAddress;
     }
 
+    @Override
     public SymbolType getMethodReturnType(String className, String methodName) {
-//        try {
         return klasses.get(className).Methodes.get(methodName).returnType;
-//        }catch (NullPointerException ed){
-//            ed.printStackTrace();
-//            return null;
-//        }
-
     }
 
+    @Override
     public int getMethodAddress(String className, String methodName) {
         return klasses.get(className).Methodes.get(methodName).codeAddress;
     }
@@ -182,17 +179,3 @@ public class SymbolTable {
     }
 
 }
-
-//class Symbol{
-//    public SymbolType type;
-//    public int address;
-//    public Symbol(SymbolType type , int address)
-//    {
-//        this.type = type;
-//        this.address = address;
-//    }
-//}
-//enum SymbolType{
-//    Int,
-//    Bool
-//}

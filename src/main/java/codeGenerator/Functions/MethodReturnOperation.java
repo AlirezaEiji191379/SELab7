@@ -16,7 +16,7 @@ public class MethodReturnOperation implements ICodeGeneratorOperation {
 
         String methodName = functionOperationData.getSymbolStack().pop();
         Address s = functionOperationData.getSs().pop();
-        SymbolType t = functionOperationData.getSymbolTable().getMethodReturnType(functionOperationData.getSymbolStack().peek(), methodName);
+        SymbolType t = functionOperationData.getSemanticFacade().getMethodReturnType(functionOperationData.getSymbolStack().peek(), methodName);
         varType temp = varType.Int;
         switch (t) {
             case Int:
@@ -27,14 +27,14 @@ public class MethodReturnOperation implements ICodeGeneratorOperation {
         if (s.varType != temp) {
             ErrorHandler.printError("The type of method and return address was not match");
         }
-        functionOperationData.getMemory()
-                .add3AddressCode(Operation.ASSIGN, s, new Address(functionOperationData.getSymbolTable().getMethodReturnAddress(functionOperationData.getSymbolStack().peek(),
+        functionOperationData.getSemanticFacade()
+                .add3AddressCode(Operation.ASSIGN, s, new Address(functionOperationData.getSemanticFacade().getMethodReturnAddress(functionOperationData.getSymbolStack().peek(),
                         methodName),
                         varType.Address,
                         TypeAddress.Indirect),
                         null);
-        functionOperationData.getMemory().add3AddressCode(Operation.JP,
-                new Address(functionOperationData.getSymbolTable().getMethodCallerAddress(functionOperationData.getSymbolStack().peek(), methodName),
+        functionOperationData.getSemanticFacade().add3AddressCode(Operation.JP,
+                new Address(functionOperationData.getSemanticFacade().getMethodCallerAddress(functionOperationData.getSymbolStack().peek(), methodName),
                         varType.Address),
                 null,
                 null);

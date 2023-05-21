@@ -14,7 +14,7 @@ public class AssignOperation implements ICodeGeneratorOperation {
         if (s1.varType != s2.varType) {
             ErrorHandler.printError("The type of operands in assign is different ");
         }
-        functionOperationData.getMemory().add3AddressCode(Operation.ASSIGN, s1, s2, null);
+        functionOperationData.getSemanticFacade().add3AddressCode(Operation.ASSIGN, s1, s2, null);
     }
 
     @Override

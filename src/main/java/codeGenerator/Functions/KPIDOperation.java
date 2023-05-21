@@ -6,7 +6,7 @@ import codeGenerator.FunctionOperationData;
 public class KPIDOperation implements ICodeGeneratorOperation {
     @Override
     public void OperateCodeGeneration(FunctionOperationData functionOperationData) {
-        functionOperationData.getSs().push(functionOperationData.getSymbolTable().get(functionOperationData.getToken().value));
+        functionOperationData.getSs().push(functionOperationData.getSemanticFacade().get(functionOperationData.getToken().value));
     }
 
     @Override

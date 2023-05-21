@@ -7,3 +7,16 @@ replace-conditional-with-polymorphism:
 در پکیج factory نیز برای ساخت هر کدام از کلاس های عملگر برحسب نوع عدد ورودی برای function استفاده شد.
 
 کلاس codeGeneratoor ریفکتور شد و آن تابع بزرگ با پیاده سازی های مختلف چند ریختی درست شد.
+
+
+
+Facade 1:
+
+در کلاس Parser کلاس های دیگر مثل ParseTable و LexicalAnalyser و CodeGenerator بیرون کشیده شدند و در یک
+کلاس Facade قرار گرفته و Wrapp شدند.
+
+Facade 2:
+کلاس هایی مموری و symbobTable ازشان interface بیرون کشیده شد و تمامی توابع آن ها در یک کلاس به نام SemanticFacade جمع شد که در کلاس های CodeGnerator استفاده میشود.
+
+
+
