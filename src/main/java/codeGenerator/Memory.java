@@ -31,12 +31,20 @@ public class Memory implements IMemory {
     @Override
     public int getTemp() {
         lastTempIndex += tempSize;
+        return Temp();
+    }
+
+    private int Temp() {
         return lastTempIndex - tempSize;
     }
 
     @Override
     public int getDateAddress() {
         lastDataAddress += dataSize;
+        return DateAddress();
+    }
+
+    private int DateAddress(){
         return lastDataAddress - dataSize;
     }
 

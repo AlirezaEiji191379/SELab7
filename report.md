@@ -26,3 +26,12 @@ Seprate Query from modifier:
 Self encapsulated field:
 
 در کلاس Memory فیلد privateی به نام codeBlock برایش یک تابع getter نوشته شد و از همان در کلاس استفاده شد.
+
+Extract Method:
+
+در کلاس ParseTable تابع سازنده به یک تابع دیگر به نام Init شکسته شد سپس خود تابع init نیز به دو تابع initTables و setTerminalsAndCols شکسته شدند.
+
+Replace Temp With Query:
+
+در کلاس Memoty دو تابع جدید به نام Temp و DateAddress ساخته شد که در توابع دیگر استفاده میشوند و مطابق الگو بازآرایی شده اند.
+
